@@ -1,19 +1,18 @@
 <script setup lang="ts">
-import { instance } from '@/api';
-import { search } from '@/api/spotify';
 import { ref } from 'vue';
+import { search } from '@/api/spotify';
 
-const artists = ref([]);
+const response = ref([]);
 
 async function init() {
-  artists.value = await search('Flume', 'artist')
+  response.value = await search('Flume', 'artist')
 }
 
 init()
 </script>
 
 <template>
-  <main class="p-16 bg-[#E1E9ED]">
-   <pre>{{ artists }}</pre>
+  <main class="p-16">
+   <pre>{{ response }}</pre>
   </main>
 </template>

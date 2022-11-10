@@ -1,6 +1,6 @@
 <template>
   <div class="layout h-screen overflow-hidden flex flex-col">
-    <nav class="h-20 p-4 bg-stone-500">
+    <nav class="h-20 p-4 bg-stone-500 shrink-0">
       Nav
     </nav>
     <div class="flex-grow overflow-y-auto">

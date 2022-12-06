@@ -13,6 +13,7 @@ const { musicObject, newMusicObject, addMusic} = store
 
 async function init() {
   response.value = await findAlbum(query.value)
+  console.log(response.value)
 }
 
 
@@ -25,15 +26,13 @@ if(query.value.length > 0){
     init()
 }
 
-
-
 </script>
 
 
 
 <template>
 
-    <section class="flex flex-row gap-12 p-4 bg-gradient-to-b from-stone-800 to-stone-900">
+    <section class="flex flex-wrap gap-12 p-4 bg-gradient-to-b from-stone-800 to-stone-900">
         <div v-for="image in response.images?.slice(0,1)" :key="image">
             <div :style="{backgroundImage: `url(${image.url})`}" class="image bg-no-repeat bg-cover self-center"></div> 
         </div>
@@ -59,14 +58,14 @@ if(query.value.length > 0){
                         <h4 class="text-white">{{ track.name }}</h4>
                         <ul class="flex flex-row gap-4">
                             <li v-for="artist in track.artists">
-                                <a :href="`/artist/?query=${artist.id}`" class="text-stone-600 underline hover:text-green-800">
+                                <router-link :to="`/artist/?query=${artist.id}`" class="text-stone-600 underline hover:text-green-800">
                                     {{ artist.name}}
-                                </a>
+                                </router-link>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <h4 class="text-white">{{ Math.floor((track.duration_ms/1000/60) << 0)}}:{{ Math.floor((track.duration_ms/1000) % 60)}}</h4>
+                <h4 class="text-white" >{{ Math.floor((track.duration_ms/1000/60) << 0)}}:<span v-if="Math.floor((track.duration_ms/1000) % 60) < 10">0</span>{{ Math.floor((track.duration_ms/1000) % 60)}}</h4>
             </li>
         </ul>
     </section>

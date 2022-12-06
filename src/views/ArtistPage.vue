@@ -33,7 +33,7 @@ if(query.value.length > 0){
 <template>
         <section :style="{backgroundImage: `url(${response.images[0].url})`}" class="image bg-no-repeat bg-cover bg-center flex flex-col justify-center items-start p-4">
             <div class="flex flex-col">
-                <h1 class="text-9xl uppercase font-bold ">{{ response.name}}</h1>
+                <h1 class="text-5xl uppercase font-bold ">{{ response.name}}</h1>
                 <h4 class="text-2xl self-center"> {{ response.followers.total }} Followers</h4>
             </div>
         </section>
